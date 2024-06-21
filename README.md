@@ -2,7 +2,7 @@
 
 # Sandboxer
 A tool to speed up windows sandbox configuration.
-<img align="right" width="250" height="250" src="https://raw.githubusercontent.com/slluxx/Sandboxer/main/screenshot.jpg">
+<img align="right" width="auto" height="250" src="https://raw.githubusercontent.com/slluxx/Sandboxer/main/screenshot.jpg">
 
 
 Windows Sandbox restricts users to a single Logon command, which can be quite limiting. While batch or PowerShell scripts offer some flexibility, they quickly reach their limits. For instance, if you need to set up a C++ toolchain or install WinGet and PowerShell 7 -but not simultaneously- the process becomes cumbersome. The more tasks you add, the more complicated and messy it gets. Even with a mounted script folder, you still need to set the execution policy and make other adjustments that can be unnatural and tedious to edit.
@@ -19,6 +19,24 @@ There are two versions available:
 - Self-contained Executable: If .NET 8 is not installed, you will need to use the self-contained "full" version of Sandboxer. This version includes all necessary runtime components, ensuring Sandboxer runs smoothly on any system, albeit with a larger file size.
 
 These options provide flexibility, allowing you to choose the version that best suits your system's capabilities and your preferences.
+
+## How to use
+
+To use Sandboxer in Windows Sandbox, simply mount a folder containing it and execute it using the logon command. For instance, you can mount the host desktop into the sandbox and run Sandboxer from there. Consider moving Sandboxer directly into the sandbox instead of using a mapped folder. Alternatively, you can set `ReadOnly` to `true` to prevent any downloaded files from interacting with the host PC.
+```xml
+<Configuration>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\Users\Username\Desktop</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\Host</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <LogonCommand>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\Host\sandboxer\sandboxer.exe</Command>
+  </LogonCommand>
+</Configuration>
+```
 
 
 ## Building
