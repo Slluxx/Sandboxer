@@ -12,6 +12,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Sandboxer</PackageId>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     
     <!-- Default settings -->
     <SelfContained>true</SelfContained>
@@ -38,7 +39,7 @@
       <HintPath>Wpf.Ui.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <EmbeddedResource Include="scripts\**" />
+    <EmbeddedResource Include="Resources\**" />
   </ItemGroup>
 
 </Project>
