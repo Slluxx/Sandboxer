@@ -6,7 +6,7 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>Sandboxer.Program</StartupObject>
     <PublishSingleFile>true</PublishSingleFile>
