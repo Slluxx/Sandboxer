@@ -1,28 +1,46 @@
 
-
 # Sandboxer
-A tool to speed up windows sandbox configuration.
-<img align="right" width="auto" height="250" src="https://raw.githubusercontent.com/slluxx/Sandboxer/main/screenshot.jpg">
+
+Sandboxer is a C# tool designed to streamline Windows Sandbox configuration, offering a user-friendly GUI and several built-in PowerShell scripts. You can enhance its functionality by adding your own scripts.
 
 
-Windows Sandbox restricts users to a single Logon command, which can be quite limiting. While batch or PowerShell scripts offer some flexibility, they quickly reach their limits. For instance, if you need to set up a C++ toolchain or install WinGet and PowerShell 7 -but not simultaneously- the process becomes cumbersome. The more tasks you add, the more complicated and messy it gets. Even with a mounted script folder, you still need to set the execution policy and make other adjustments that can be unnatural and tedious to edit.
-
-### Meet Sandboxer
-
-Sandboxer is a C# tool featuring a user-friendly GUI with several built-in PowerShell scripts. You can easily extend the list of available scripts by adding your own to the `.\scripts\` directory. All scripts run with "ExecutionPolicy Bypass," ensuring they execute seamlessly without affecting the broader system scope.
+<p align="center">
+  <img align="center" width="700" height="auto" src="https://raw.githubusercontent.com/slluxx/Sandboxer/main/screenshot.jpg">
+</p>
 
 
-There are two versions available:
+## Why Sandboxer?
 
-- Lightweight Executable: If .NET 8 is installed on your machine, you can use the compact 5MB version of Sandboxer. This version leverages the existing .NET runtime, ensuring minimal disk space usage and faster startup times.
+Windows Sandbox limits users to a single Logon command, which can be restrictive. While batch or PowerShell scripts provide flexibility, managing multiple tasks that you only sometimes want can become cumbersome. Sandboxer simplifies this process by allowing scripts to execute seamlessly with "ExecutionPolicy Bypass," ensuring they run without impacting system settings.
 
-- Self-contained Executable: If .NET 8 is not installed, you will need to use the self-contained "full" version of Sandboxer. This version includes all necessary runtime components, ensuring Sandboxer runs smoothly on any system, albeit with a larger file size.
+## Extending Functionality with Custom Scripts
 
-These options provide flexibility, allowing you to choose the version that best suits your system's capabilities and your preferences.
+Extend Sandboxer's capabilities by adding your own scripts. Scripts can introduce custom UI elements (currently checkboxes) defined in a specific format using XML-like syntax:
 
-## How to use
+```xml
+#! SANDBOXER: <attributes>
+#! SANDBOXER:   <checkbox checked="True" uniquePSArgName="chromeInstall">Chrome</checkbox>
+#! SANDBOXER:   <checkbox checked="False" uniquePSArgName="firefoxInstall">Firefox</checkbox>
+#! SANDBOXER:   <checkbox checked="False" uniquePSArgName="edgeInstall">Edge</checkbox>
+#! SANDBOXER: </attributes>
+```
 
-To use Sandboxer in Windows Sandbox, simply mount a folder containing it and execute it using the logon command. For instance, you can mount the host desktop into the sandbox and run Sandboxer from there. Consider moving Sandboxer directly into the sandbox instead of using a mapped folder. Alternatively, you can set `ReadOnly` to `true` to prevent any downloaded files from interacting with the host PC.
+(For detailed usage, refer to the [Install Browser](https://github.com/Slluxx/Sandboxer/blob/main/src/Resources/Install%20Browser.ps1) PowerShell script.)
+
+## Version Options
+
+Choose from two versions based on your system's requirements:
+- **Lightweight Executable**: Utilizes the existing .NET runtime (requires .NET 8), offering a compact 5MB version with faster startup times.
+- **Self-contained Executable**: Includes all necessary runtime components, ensuring compatibility on systems without .NET 8 installed, albeit with a larger file size.
+
+## Getting Started with Sandboxer
+
+To use Sandboxer in Windows Sandbox:
+1. Mount a folder containing Sandboxer.
+2. Execute Sandboxer using the logon command.
+   
+For example, mount the host desktop into the sandbox and run Sandboxer from there. Alternatively, set `ReadOnly` to `true` to prevent downloaded files from interacting with the host PC.
+
 ```xml
 <Configuration>
   <MappedFolders>
@@ -38,21 +56,15 @@ To use Sandboxer in Windows Sandbox, simply mount a folder containing it and exe
 </Configuration>
 ```
 
+## Building Sandboxer
 
-## Building
-
-To build Sandboxer, you'll need the .NET SDK 8. Follow these steps:
-
+To build Sandboxer:
 1. Clone the repository.
 2. Navigate to the `.\src` directory.
-3. Run `dotnet build` for a standard build or `dotnet build -c NNL` for the lightweight version. Alternatively, you can use the `dotnet publish` command for creating deployable packages.
+3. Run `dotnet build` for a standard build or `dotnet build -c NNL` for the lightweight version. Alternatively, use `dotnet publish` to create deployable packages.
 
-Note: The `csproj` file might need some adjustments, and contributions via pull requests are welcome.
-
+Adjustments to the `csproj` file may be necessary; contributions via pull requests are welcome.
 
 ## Licenses
 
-This project is licensed under the GNU General Public License v3.0. For more details, see the LICENSE file.
-
-In addition, this project uses the WPF UI library, which is licensed under the MIT License. For more details on the WPF UI library license, see the LICENSE-MIT file.
-The WPF UI library is © 2021-2024 Leszek Pomianowski and WPF UI Contributors. More information can be found at https://dev.lepo.co/.
+This project is licensed under the GNU General Public License v3.0. Additional components, such as the WPF UI library, are licensed under the MIT License. For detailed licensing information, refer to the LICENSE and LICENSE-MIT files.
