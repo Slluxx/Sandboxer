@@ -12,7 +12,7 @@ Sandboxer is a C# tool designed to streamline Windows Sandbox configuration, off
 
 ## Why Sandboxer?
 
-Windows Sandbox limits users to a single Logon command, which can be restrictive. While batch or PowerShell scripts provide flexibility, managing multiple tasks that you only sometimes want can become cumbersome. Sandboxer simplifies this process by allowing scripts to execute seamlessly with "ExecutionPolicy Bypass," ensuring they run without impacting system settings.
+Windows Sandbox limits users to a single Logon command, which can be restrictive. While batch or PowerShell scripts provide flexibility, managing multiple tasks that you only sometimes want can become cumbersome. Sandboxer simplifies this process by allowing scripts to execute seamlessly with "ExecutionPolicy Bypass", making it easier to manage and execute your tasks.
 
 ## Extending Functionality with Custom Scripts
 
