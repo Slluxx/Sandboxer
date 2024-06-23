@@ -28,3 +28,5 @@ $currentPath = [System.Environment]::GetEnvironmentVariable("Path", [System.Envi
 $newPath = "C:/msys64/ucrt64/bin"
 $updatedPath = "$currentPath;$newPath"
 [System.Environment]::SetEnvironmentVariable("Path", $updatedPath, [System.EnvironmentVariableTarget]::Machine)
+
+Remove-Item $destinationPath
