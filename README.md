@@ -5,7 +5,7 @@ Sandboxer is a C# tool designed to streamline Windows Sandbox configuration, off
 
 
 <p align="center">
-  <img align="center" width="700" height="auto" src="https://raw.githubusercontent.com/slluxx/Sandboxer/main/screenshot.jpg">
+  <img align="center" width="700" height="auto" src="https://raw.githubusercontent.com/Slluxx/Sandboxer/main/screenshot.jpg">
 </p>
 
 
