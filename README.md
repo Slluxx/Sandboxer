@@ -3,6 +3,7 @@
 
 Sandboxer is a C# tool designed to streamline Windows Sandbox configuration, offering a user-friendly GUI and several built-in PowerShell scripts. You can enhance its functionality by adding your own scripts.
 
+**Note:** Despite being named "Sandboxer" and initially intended for Windows Sandbox, it can be effectively employed in any (windows-)environment of your choosing.
 
 <p align="center">
   <img align="center" width="700" height="auto" src="https://raw.githubusercontent.com/Slluxx/Sandboxer/main/screenshot.jpg">
