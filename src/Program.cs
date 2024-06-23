@@ -26,9 +26,9 @@ namespace Sandboxer
         static void Main(string[] args)
         {
             System.IO.Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "sandboxer"));
-            Console.WriteLine("Extracting resources...");
+
             ExtractResource("ps1");
-            Console.WriteLine("Starting application...");
+
             var app = new App();
             app.InitializeComponent();
             app.Run();
